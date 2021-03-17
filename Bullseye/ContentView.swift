@@ -30,7 +30,6 @@ struct ContentView: View {
           .bold()
       }
       Button(action: {
-        print("Hello, SwiftUI!")
         self.alertIsVisible = true
       }) {
         Text("Hit me")
@@ -41,9 +40,14 @@ struct ContentView: View {
                            message: Text("This is my first pop-up"),
                            dismissButton: .default(Text("Awesome!")))
              })
-      Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Button")/*@END_MENU_TOKEN@*/
+      Button(action: {
+        self.knockKnockIsVisible = true
+      }) {
+        Text("Knock knock")
       }
+      .alert(isPresented: $knockKnockIsVisible, content: {
+        return Alert(title: Text("Who is there?"), message: Text("Me"), dismissButton: .default(Text("Open!")))
+      })
     }
   }
 }
